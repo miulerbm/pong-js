@@ -7,12 +7,14 @@ let context;
 // players
 let playerWidth = 10;
 let playerHeight = 50;
+let playerVelocityY = 0;
 
 let player1 = {
   x: 10,
   y: boardHeight / 2,
   width: playerWidth,
   height: playerHeight,
+  velocityY: playerVelocityY,
 };
 
 let player2 = {
@@ -20,6 +22,7 @@ let player2 = {
   y: boardHeight / 2,
   width: playerWidth,
   height: playerHeight,
+  velocityY: playerVelocityY,
 };
 
 window.onload = function () {
@@ -34,6 +37,8 @@ window.onload = function () {
 
   //gameloop
   requestAnimationFrame(update);
+  //key listener for pressing up and down
+  document.addEventListener("keyup", movePlayer);
 };
 
 function update() {
@@ -45,4 +50,22 @@ function update() {
 
   //player2
   context.fillRect(player2.x, player2.y, player2.width, player2.height);
+}
+
+function movePlayer(e) {
+  // this function listens for an event
+  //player1
+  if (e.code === "KeyW") {
+    // Negative velocity goes up because top left is (0,0)
+    player1.velocityY = -4;
+  } else if (e.code === "KeyS") {
+    player1.velocityY = 4;
+  }
+
+  if (e.code === "ArrowUp") {
+    // Negative velocity goes up because top left is (0,0)
+    player2.velocityY = -4;
+  } else if (e.code === "ArrowDown") {
+    player2.velocityY = 4;
+  }
 }
