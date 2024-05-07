@@ -43,12 +43,15 @@ window.onload = function () {
 
 function update() {
   requestAnimationFrame(update);
-
+  //blanking the canvas every update:
+  context.clearRect(0, 0, boardWith, boardHeight);
   //player1
   context.fillStyle = "skyblue";
+  player1.y += player1.velocityY;
   context.fillRect(player1.x, player1.y, player1.width, player1.height);
 
   //player2
+  player2.y += player2.velocityY;
   context.fillRect(player2.x, player2.y, player2.width, player2.height);
 }
 
