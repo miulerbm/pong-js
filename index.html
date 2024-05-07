@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" , content="width=device-width, initial-scale=1.0" />
-    <title>Pong</title>
+    <title>Pong pvp</title>
     <link rel="stylesheet" href="pong.css" />
     <script src="pong.js"></script>
   </head>
 
   <body>
-    <canvas id="board"> </canvas>
+    <div class="filler"></div>
+    <div class="canvas">
+      <h1>Pong (2 vs 2)</h1>
+      <canvas id="board"></canvas>
+    </div>
+
+    <div class="instructions">
+      <h3>Instructions</h3>
+      <p>Player 1: Move using "W" and "S".</p>
+      <p>Player 2: Move using "↑" and "↓".</p>
+      <p>Press ESC to STOP and RESUME the game.</p>
+    </div>
   </body>
 </html>
