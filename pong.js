@@ -47,12 +47,28 @@ function update() {
   context.clearRect(0, 0, boardWith, boardHeight);
   //player1
   context.fillStyle = "skyblue";
-  player1.y += player1.velocityY;
+  //   player1.y += player1.velocityY;
+  // Instead of directly passing the new y position, we calculate
+  // the next position and if it's not out of bounds, then we
+  // pass that value to the actual y position of the player.
+  let nextPlayer1Y = player1.y + player1.velocityY;
+  if (!outOfBounds(nextPlayer1Y)) {
+    player1.y = nextPlayer1Y;
+  }
   context.fillRect(player1.x, player1.y, player1.width, player1.height);
 
   //player2
-  player2.y += player2.velocityY;
+
+  //   player2.y += player2.velocityY;
+  let nextPlayer2Y = player2.y + player2.velocityY;
+  if (!outOfBounds(nextPlayer2Y)) {
+    player2.y = nextPlayer2Y;
+  }
   context.fillRect(player2.x, player2.y, player2.width, player2.height);
+}
+
+function outOfBounds(yPosition) {
+  return yPosition < 0 || yPosition + playerHeight > boardHeight;
 }
 
 function movePlayer(e) {
